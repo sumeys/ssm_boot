@@ -9,6 +9,7 @@ import java.util.Date;
  * @date 2018/8/31 下午6:07
  */
 
+//区域信息
 public class Area {
 
     //id
