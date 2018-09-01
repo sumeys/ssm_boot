@@ -2,6 +2,8 @@ package com.sumey.o2o.web.superadmin;
 
 import com.sumey.o2o.entity.Area;
 import com.sumey.o2o.service.AreaService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +25,8 @@ import java.util.Map;
 @RequestMapping("/superadmin")
 public class AreaController {
 
+    Logger logger = LoggerFactory.getLogger(AreaController.class);
+
     @Autowired
     private AreaService areaService;
 
@@ -40,6 +44,7 @@ public class AreaController {
             modelMap.put("success", false);
             modelMap.put("errMsg", e.toString());
         }
+
         return modelMap;
     }
 
