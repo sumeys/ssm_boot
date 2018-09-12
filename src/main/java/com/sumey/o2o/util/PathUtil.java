@@ -23,7 +23,7 @@ public class PathUtil {
     }
 
     public static String getShopImgPath(long shopId) {
-        String imgPath = "/Users/didi/sumey/ssmimg/shop/" + shopId + "/";
+        String imgPath = "upload/item/shop" + shopId + "/";
         return imgPath.replace("/", separator);
     }
 }

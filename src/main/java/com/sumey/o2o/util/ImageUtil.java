@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
+import java.util.logging.Logger;
 
 /**
  * create by
@@ -22,15 +23,16 @@ public class ImageUtil {
     private static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
     private static final Random r = new Random();
 
-    public static String generateThumbnail(CommonsMultipartFile thumbnail, String targetAddr) {
+    public static String generateThumbnail(File thumbnail, String targetAddr) {
         //用户传来的图片名字可能会重复，这里要随机生成名字
         String realFileName = getRandomFileName();
         String extension = getFileExtension(thumbnail);
         makeDirPath(targetAddr);
         String relativeAddr = targetAddr + realFileName + extension;
+        System.out.println("当前的路径是" + relativeAddr);
         File dest = new File(PathUtil.getImgBasePath() + relativeAddr);
         try {
-            Thumbnails.of(thumbnail.getInputStream()).size(200, 200)
+            Thumbnails.of(thumbnail).size(200, 200)
                     .watermark(Positions.BOTTOM_RIGHT, ImageIO.read(new File(basePath + "/watermark.png")), 0.5f)
                     .outputQuality(0.8f).toFile(dest);
         } catch (IOException e) {
@@ -51,8 +53,8 @@ public class ImageUtil {
     }
 
     //获取输入文件的扩展名
-    private static String getFileExtension(CommonsMultipartFile cFile) {
-        String originFileName = cFile.getOriginalFilename();
+    private static String getFileExtension(File cFile) {
+        String originFileName = cFile.getName();
         return originFileName.substring(originFileName.lastIndexOf("."));
 
     }
