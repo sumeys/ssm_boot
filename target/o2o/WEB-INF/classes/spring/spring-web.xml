@@ -18,6 +18,7 @@
     <mvc:default-servlet-handler/>
 
     <!--定义视图解析器-->
+    <!--将我们访问的页面锁定在/WEB-INF/html/目录下，并且后缀是html的文件-->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/html/"/>
         <property name="suffix" value=".html"/>

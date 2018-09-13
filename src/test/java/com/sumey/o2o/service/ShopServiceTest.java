@@ -9,7 +9,6 @@ import com.sumey.o2o.entity.ShopCategory;
 import com.sumey.o2o.enums.ShopStateEnum;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import java.io.File;
 import java.util.Date;
