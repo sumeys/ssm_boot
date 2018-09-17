@@ -1,11 +1,10 @@
 $(function () {
-    var initUrl = '/o2o/shopadmin/getshopinitinfo';
+    var initUrl = '/o2o/shop/getshopinitinfo';
     var registerShopUrl = '/o2o/shopadmin/registershop';
-    alert(initUrl);
     getShopInitInfo();
 
     function getShopInitInfo() {
-        $.getJSon(initUrl, function (data) {
+        $.getJSON(initUrl, function (data) {
             if (data.success) {
                 var tempHtml = '';
                 var tempAreaHtml = '';
@@ -19,7 +18,7 @@ $(function () {
                         + item.areaName + '</option>';
                 });
                 $('#shop-category').html(tempHtml);
-                $('#aera').html(tempAreaHtml);
+                $('#area').html(tempAreaHtml);
             }
         });
 
@@ -35,7 +34,7 @@ $(function () {
                 }).data('id')
             };
             shop.area = {
-                shopCategoryId: $('#aera').find('option').not(function () {
+                areaId: $('#area').find('option').not(function () {
                     return !this.selected;
                 }).data('id')
             };
